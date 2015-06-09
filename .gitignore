@@ -5,6 +5,7 @@
 node_modules/
 bower_components/
 public/stylesheets/
+public/bower_components/
 
 # Databases and such
 data/mongodb/
