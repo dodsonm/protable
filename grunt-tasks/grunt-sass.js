@@ -12,7 +12,7 @@ module.exports = function (grunt) {
   grunt.config('sass', {
     options: {
       includePaths: [
-        'bower_components/foundation/scss',
+        'bower_components/bootstrap-sass-official/assets/stylesheets',
         'bower_components/semantic.gs/stylesheets/scss'
       ]
     },
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         outputStyle: 'nested'
       },
       files: {
-        'public/stylesheets/print.css': 'scss/print.scss',
+        'public/stylesheets/style.css': 'scss/style.scss',
       }
     }
   });
