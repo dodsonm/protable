@@ -1,12 +1,43 @@
 {% extends 'layout.html' %}
 
+    {% block head.css %}
+        <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css" />
+        <link rel="stylesheet" href="/bower_components/igrowl/dist/css/igrowl.min.css" />
+        <link rel="stylesheet" href="/bower_components/igrowl/dist/css/fonts/steadysets.css" />
+    {% endblock head.css %}
+
+    {% block body.js %}
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/igrowl/dist/js/igrowl.min.js"></script>
+        <script>
+            $('#growler').click(function (event) {
+                event.preventDefault();
+                $.iGrowl({
+                    title: 'LearningMedia iGrowl Alert',
+                    message: "Sorry, Dave, but I can't let you do that.",
+                    icon: 'steadysets-bullhorn',
+                    animShow: 'tada',
+                    placement: {
+                        x: 'center',
+                        y: 'top'
+                    },
+                    offset: {
+                        x: 100,
+                        y: 20
+                    }
+                });
+            });
+        </script>
+    {% endblock body.js %}
+
+
     {% block content %}
         <main class="container">
             <h1>{{ title }}</h1>
             <p class="lead">
                 Lorem ipsum dolor sit ti amet.
             </p>
-            <figure>
+            <figure id="growler">
                 <figcaption>
                     Click me.
                 </figcaption>

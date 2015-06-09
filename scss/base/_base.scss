@@ -1,0 +1,44 @@
+/* ===========================
+   Base
+   =========================== */
+
+body {
+    background-color: seashell;
+    font-family: $font1;
+    font-weight: 300;
+    font-size: 1.6em;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+main, article {
+    background-color: white;
+    margin: 20px;
+}
+
+figure {
+    background-color: #ececec;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    cursor: pointer!important;
+    min-height: 300px;
+    position: relative;
+    width: 100%;
+
+    figcaption {
+        bottom: 50%;
+        cursor: inherit;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+a {
+    color: $color-link;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-link-hover;
+    }
+}

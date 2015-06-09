@@ -3,6 +3,7 @@
   "dependencies": {
     "semantic.gs": "git://github.com/frontendstacked/semantic.gs.git",
     "underscore": "~1.8.3",
-    "bootstrap-sass-official": "~3.3.4"
+    "bootstrap-sass-official": "~3.3.4",
+    "igrowl": "~3.0.1"
   }
 }
