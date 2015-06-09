@@ -1,0 +1,7 @@
+{
+  "name": "protable-bower",
+  "dependencies": {
+    "semantic.gs": "git://github.com/frontendstacked/semantic.gs.git",
+    "underscore": "~1.8.3"
+  }
+}
