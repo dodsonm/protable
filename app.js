@@ -1,30 +1,51 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+    // ORM layer on top of MongoDB
+    mongoose = require('mongoose'),
 
-var app = express();
+    // view engine collection
+    // (note) each view engine used must still be installed via npm
+    consolidate = require('consolidate'),
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+    // routes
+    routes = require('./routes/index'),
 
+    // database connection
+    db = mongoose.connect('mongodb://localhost/protable').connection,
+
+    // instantiate express
+    app = express();
+
+// DEFAULT VIEW ENGINE (required)
+// In this cfg, 'html' (1)links to swig & (2)becomes default extension
+app.set('view engine', 'html');
+app.engine('html', consolidate.swig);
+// view directories
+app.set('views', [
+    __dirname + '/views'
+]);
+// view caching
+app.set('view cache', false);
+
+// MIDDLEWARE
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ROUTING
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 
+// -----------------------------------------------------------------------------
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -39,7 +60,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('error.html', {
             message: err.message,
             error: err
         });
@@ -50,7 +71,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('error.html', {
         message: err.message,
         error: {}
     });
