@@ -16,7 +16,7 @@ var express = require('express'),
     routes = require('./routes/index'),
 
     // database connection
-    db = mongoose.connect('mongodb://localhost/protable').connection,
+    //db = mongoose.connect('mongodb://localhost/protable').connection,
 
     // instantiate express
     app = express();
