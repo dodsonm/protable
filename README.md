@@ -1,2 +1,13 @@
 # protable
-Self-contained front end prototyping with Node + Express + Mongo stack.
+### yes, that was a typo of the word "portable"
+Portable, self-contained front end prototyping with Node + Express + Mongo stack.
+
+## Getting Started
+1. Check out the repo.
+2. 'cd' into the clone.
+3. run 'make'
+4. run 'grunt web'
+
+## To Develop
+1. After getting started, run 'grunt develop'
+
