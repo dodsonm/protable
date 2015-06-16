@@ -2,10 +2,10 @@
 #................................ MINE o_O ....................................#
 
 # Build targets
-node_modules/
-bower_components/
-public/stylesheets/
-public/bower_components/
+node_modules
+bower_components
+public/stylesheets
+public/bower_components
 
 # Databases and such
 data/mongodb/
