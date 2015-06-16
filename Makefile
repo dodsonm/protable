@@ -5,7 +5,7 @@
 
 BOWER = $(CURDIR)/node_modules/.bin/bower
 
-install: node_modules bower_components build
+install: mongodb node_modules bower_components build
 
 # Hand off build to Gruntfile
 build:
@@ -13,6 +13,10 @@ build:
 
 clean:
 	rm -rf node_modules/ bower_components/ public/stylesheets/*
+	# but leave mongodb
+
+mongodb:
+	mkdir -p ./data/mongodb
 
 node_modules:
 	npm install
