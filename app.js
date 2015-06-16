@@ -22,9 +22,8 @@ var express = require('express'),
     app = express();
 
 // DEFAULT VIEW ENGINE (required)
-// In this cfg, 'html' (1)links to swig & (2)becomes default extension
-app.set('view engine', 'html');
-app.engine('html', consolidate.swig);
+app.set('view engine', 'jade');
+app.engine('jade', consolidate.jade);
 // view directories
 app.set('views', [
     __dirname + '/views'
@@ -60,7 +59,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error.html', {
+        res.render('error', {
             message: err.message,
             error: err
         });
@@ -71,7 +70,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error.html', {
+    res.render('error', {
         message: err.message,
         error: {}
     });
